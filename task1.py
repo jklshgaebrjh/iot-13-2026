@@ -1,10 +1,9 @@
 class Smartphone:
     def __init__(
-        self, model, price, memory_capacity, battery_capacity, numbers = ''
+        self, model, price, memory_capacity, battery_capacity
     ):
         self.price = price
         self.model = model
-        self.numbers = numbers
         self.memory_capacity = memory_capacity
         self.battery_capacity = battery_capacity
 
@@ -16,7 +15,7 @@ class Smartphone:
               f"\nprice: {self.price} usd"
               f"\nstorage capacity: {self.memory_capacity} gb"
               f"\nbattery capacity: {self.battery_capacity} mAh"
-              f"\n{"-" * 30}")
+              f"\n{'-' * 30}")
 
 
 class PhoneStore:
@@ -28,7 +27,7 @@ class PhoneStore:
 
     def sort_by_price(self):
         print("\n   phones sorted by price")
-        sorted_phones = sorted(self.phones, key = lambda item: item.price)
+        sorted_phones = sorted(self.phones, key=lambda item: item.price)
         for phone in sorted_phones:
             phone.print_info()
 
@@ -41,7 +40,7 @@ class PhoneStore:
         if below_budget:
             best_phone = max(
                 below_budget,
-                key = lambda item: (
+                key=lambda item: (
                     item.memory_capacity,
                     item.battery_capacity
                     )
@@ -59,26 +58,25 @@ def main():
     store = PhoneStore()
 
     store.add_new_phone(Smartphone(
-        "Iphone", 950, 512, 3600, "050-671-488-85-13"
+        "Iphone", 950, 512, 3600
     ))
     store.add_new_phone(Smartphone(
-        "Xiaomi", 300, 128, 4200, "050-671-488-86-13"
+        "Xiaomi", 300, 128, 4200
     ))
     store.add_new_phone(Smartphone(
-        "Samsung", 800, 1024, 5200, "050-671-488-87-13"
+        "Samsung", 800, 1024, 5200
     ))
     store.add_new_phone(Smartphone(
-        "Vivo", 300, 512, 4000, "050-671-488-88-13"
+        "Vivo", 300, 512, 4000
     ))
     store.add_new_phone(Smartphone(
-        "Poco", 300, 512, 3200, "050-671-488-89-13"
+        "Poco", 300, 512, 3200
     ))
     
-    # store.find_phone()
-    # store.sort_by_price()
-    # store.best_choice(400)
-    # print([phone.model for phone in store.phones])    
-    # print([phone.price for phone in store.phones])
+    store.find_phone()
+    store.sort_by_price()
+    store.best_choice(400)
+    
         
     for phone in store.phones:
         print(f"{phone.model} price is: {phone.price} usd")
